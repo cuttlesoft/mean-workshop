@@ -1,0 +1,14 @@
+{
+  "name": "scratch",
+  "version": "1.0.0",
+  "description": "This project was created for a workshop on web app development with the MEAN stack.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Katie Russ <katie.k7r@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
