@@ -37,5 +37,39 @@ $ git add .
 $ git commit -m "Initial commit"
 ```
 
+### 2. Basic Server
+
+Create `server.js` with the basics:
+```javascript
+// Basic Express app
+
+var express = require('express');
+var app = express();
+
+// Basic configuration
+
+var port = process.env.PORT || 3001;
+
+// Basic route
+
+app.get('/', function(req, res) {
+  res.send('Hello, World!');
+});
+
+// Start app
+
+app.listen(port, function() {
+  console.log('Server running on port ' + port);
+});
+```
+
+Start the server:
+```
+$ node server.js
+```
+_Note: Using something like [node-supervisor](https://github.com/petruisfan/node-supervisor) prevents having to stop and restart the server every time changes are made._
+
+Go to [http://localhost:3001](http://localhost:3001) in the browser, and you should see "Hello, World!"
+
 
 <!-- When working on your project, feel free to start from Scratch! -->
