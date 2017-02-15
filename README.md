@@ -72,4 +72,31 @@ _Note: Using something like [node-supervisor](https://github.com/petruisfan/node
 Go to [http://localhost:3001](http://localhost:3001) in the browser, and you should see "Hello, World!"
 
 
+### 3. Basic HTML
+
+Add route to `server.js` to serve `index.html`:
+```javascript
+app.get('*', function(req, res) {
+  res.sendfile('./public/index.html');
+});
+```
+
+Create `public/index.html`:
+```html
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch</title>
+</head>
+<body>
+    Hello (again), world!
+</body>
+</html>
+```
+
+Go to [http://localhost:3001/anything](http://localhost:3001/anything) in the browser, and you should now see "Hello (again), World!"
+_Note: Unless the initial route created in `server.js` is removed, [http://localhost:3001](http://localhost:3001) will continue to show "Hello, World!" instead of the contents of `index.html`._
+
+
 <!-- When working on your project, feel free to start from Scratch! -->

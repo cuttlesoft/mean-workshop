@@ -7,10 +7,18 @@ var app = express();
 
 var port = process.env.PORT || 3001;
 
-// Basic route
+// // Basic route
+//
+// app.get('/', function(req, res) {
+//   res.send('Hello, World!');
+// });
 
-app.get('/', function(req, res) {
-  res.send('Hello, World!');
+// Set the static files location + index
+
+app.use(express.static(__dirname + '/public'));
+
+app.get('*', function(req, res) {
+  res.sendFile('index.html');
 });
 
 // Start app
