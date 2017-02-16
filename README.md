@@ -101,5 +101,28 @@ _Note: Unless the initial route created in `server.js` is removed, [http://local
 
 _Note: At this point, we also added a [Bootstrap](http://getbootstrap.com/) theme from [Bootswatch](https://bootswatch.com/) and a little bit of HTML, so we would have something nicer to look at as we build._
 
+### 4. Basic Angular App
+
+Create `public/app/app.js`:
+```javascript
+angular
+  .module('scratchApp', [])
+  .controller('appController', appController);
+
+function appController() {
+  var vm = this;
+  console.log('Why, hello (world)!');
+}
+```
+
+Add `ng-app` and `ng-controller` to `index.html`:
+```html
+<html lang="en" ng-app="scratchApp">
+<head>...</head>
+<body ng-controller="appController as app">
+    ...
+</body>
+</html>
+```
 
 <!-- When working on your project, feel free to start from Scratch! -->

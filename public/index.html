@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" ng-app="scratchApp">
 <head>
     <meta charset="UTF-8">
     <title>Scratch</title>
@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css">
     <link rel="stylesheet" href="/style.css">
+
+    <!-- angular -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.2/angular.min.js"></script>
+
+    <!-- app scripts -->
+    <script src="/app/app.js"></script>
 </head>
-<body>
+<body ng-controller="appController as app">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
