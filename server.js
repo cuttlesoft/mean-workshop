@@ -14,16 +14,22 @@ mongoose.connect(databaseUrl);
 
 // Model(s)
 
-mongoose.model('Note', {
+var Note = mongoose.model('Note', {
   title: String,
   content: String,
 });
 
-// // Basic route
-//
-// app.get('/', function(req, res) {
-//   res.send('Hello, World!');
-// });
+// Basic routes
+
+app
+  .route('/api/notes')
+
+  .get(function (req, res) {
+    Note.find(function(err, notes) {
+      if (err) res.send(err);
+      res.json(notes);
+    });
+  });
 
 // Set the static files location + index
 

@@ -8,6 +8,7 @@ This project was created for a workshop on web app development with the MEAN sta
 1. **[Basic HTML](#3-basic-html)**
 1. **[Basic Angular App](#4-basic-angular-app)**
 1. **[Basic Model](#5-basic-model)**
+1. **[Basic Route](#6-basic-route)**
 
 
 ### 1. Getting Started
@@ -161,6 +162,22 @@ Ensure that MongoDB is running:
 $ mongod
 ```
 _Note: You may have to `sudo mongod`; for more on managing MongoDB processes, see [here](https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/)._
+
+
+### 6. Basic Route
+
+Add route to get notes in `server.js`:
+```javascript
+app.route('/api/notes')
+  .get(function (req, res) {
+    Note.find(function(err, notes) {
+      if (err) res.send(err);
+      res.json(notes);
+    });
+  });
+```
+
+Navigating to [`http://localhost:3001/api/notes`](http://localhost:3001/api/notes) should show `[]`, which is the (currently empty) array of notes being returned.
 
 
 <!-- When working on your project, feel free to start from Scratch! -->
