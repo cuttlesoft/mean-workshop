@@ -9,6 +9,7 @@
   "author": "Katie Russ <katie.k7r@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "mongoose": "^4.8.2"
   }
 }

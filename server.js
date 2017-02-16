@@ -3,9 +3,21 @@
 var express = require('express');
 var app = express();
 
+var mongoose = require('mongoose');
+
 // Basic configuration
 
 var port = process.env.PORT || 3001;
+var databaseUrl = 'mongodb://localhost/scratch-dev';
+
+mongoose.connect(databaseUrl);
+
+// Model(s)
+
+mongoose.model('Note', {
+  title: String,
+  content: String,
+});
 
 // // Basic route
 //

@@ -3,6 +3,12 @@
 This project was created for a workshop on web app development with the MEAN stack. It uses MongoDB, Express, AngularJS, and Node.js, as well as (...other packages...) to create a basic application with (...features...).
 
 ## Walkthrough
+1. **[Getting Started](#1-getting-started)**
+1. **[Basic Server](#2-basic-server)**
+1. **[Basic HTML](#3-basic-html)**
+1. **[Basic Angular App](#4-basic-angular-app)**
+1. **[Basic Model](#5-basic-model)**
+
 
 ### 1. Getting Started
 
@@ -36,6 +42,7 @@ Initial commit:
 $ git add .
 $ git commit -m "Initial commit"
 ```
+
 
 ### 2. Basic Server
 
@@ -101,6 +108,7 @@ _Note: Unless the initial route created in `server.js` is removed, [http://local
 
 _Note: At this point, we also added a [Bootstrap](http://getbootstrap.com/) theme from [Bootswatch](https://bootswatch.com/) and a little bit of HTML, so we would have something nicer to look at as we build._
 
+
 ### 4. Basic Angular App
 
 Create `public/app/app.js`:
@@ -124,5 +132,35 @@ Add `ng-app` and `ng-controller` to `index.html`:
 </body>
 </html>
 ```
+
+
+### 5. Basic Model
+
+Install [Mongoose](http://mongoosejs.com/):
+```
+$ npm install --save mongoose
+```
+_Note: Mongoose is an object-document mapper (like an [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping) but for a document database) that makes working with MongoDB a lot nicer/easier._
+
+Configure database in `server.js`:
+```javascript
+var databaseUrl = 'mongodb://localhost/scratch-dev';
+mongoose.connect(databaseUrl);
+```
+
+Create `notes` model in `server.js`:
+```javascript
+mongoose.model('Note', {
+  title: String,
+  content: String,
+});
+```
+
+Ensure that MongoDB is running:
+```
+$ mongod
+```
+_Note: You may have to `sudo mongod`; for more on managing MongoDB processes, see [here](https://docs.mongodb.com/manual/tutorial/manage-mongodb-processes/)._
+
 
 <!-- When working on your project, feel free to start from Scratch! -->
