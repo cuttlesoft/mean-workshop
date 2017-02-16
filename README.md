@@ -96,7 +96,10 @@ Create `public/index.html`:
 ```
 
 Go to [http://localhost:3001/anything](http://localhost:3001/anything) in the browser, and you should now see "Hello (again), World!"
+
 _Note: Unless the initial route created in `server.js` is removed, [http://localhost:3001](http://localhost:3001) will continue to show "Hello, World!" instead of the contents of `index.html`._
+
+_Note: At this point, we also added a [Bootstrap](http://getbootstrap.com/) theme from [Bootswatch](https://bootswatch.com/) and a little bit of HTML, so we would have something nicer to look at as we build._
 
 
 <!-- When working on your project, feel free to start from Scratch! -->
