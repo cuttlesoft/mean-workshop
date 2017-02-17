@@ -2,7 +2,7 @@ angular
   .module('scratchApp')
   .controller('NotesController', NotesController);
 
-function NotesController(NotesService) {
+function NotesController($scope, NotesService) {
   var vm = this;
 
   // Assign functions so they're accessible in the view
@@ -10,6 +10,8 @@ function NotesController(NotesService) {
   vm.getNotes = getNotes;
   vm.createNote = createNote;
   vm.deleteNote = deleteNote;
+
+  vm.clearForm = clearForm;
 
   // Load all notes with the controller
 
@@ -31,6 +33,7 @@ function NotesController(NotesService) {
     NotesService.createNote(note).then(function(res) {
       // Add new note to notes in the view
       vm.notes.push(res.data);
+      clearForm();
     }, function(err) {
       console.log('Error creating note: ', err.statusText);
     });
@@ -44,5 +47,11 @@ function NotesController(NotesService) {
     }, function(err) {
       console.log('Error deleting note: ', err.statusText);
     });
+  }
+
+  function clearForm() {
+    $scope.note = {};
+    vm.form.$setPristine();
+    vm.form.$setUntouched();
   }
 }

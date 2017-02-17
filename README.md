@@ -312,5 +312,9 @@ Backend changes:
   - Notes service function to make request
   - Notes controller function to call service
   - Button in view
+- Note creation
+  - Add custom filter to reverse note order in list (order newest to oldest)
+  - Clear form when note is created
+  - Clear form with "Cancel" button
 
 <!-- When working on your project, feel free to start from Scratch! -->
