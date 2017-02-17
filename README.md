@@ -10,6 +10,7 @@ This project was created for a workshop on web app development with the MEAN sta
 1. **[Basic Model](#5-basic-model)**
 1. **[Basic Route](#6-basic-route)**
 1. **[Note Creation](#7-note-creation)**
+1. **[Restructure for Scalability](#8-restructure-for-scalability)**
 
 
 ### 1. Getting Started
@@ -282,5 +283,18 @@ Add HTML for displaying the (newly-creatable) notes in `index.html`:
     </div>
 </div>
 ```
+
+
+### 8. Restructure for Scalability
+
+At this point, although the application works, all backend code is in `server.js`, all frontend code is in `app.js`, and all HTML is in `index.html` -- this will not be maintainable or scalable as any more is added to the application.
+
+Frontend changes:
+- Create domain-specific directories (e.g., `/public/app/notes`)
+- Move domain-specific code to its respective directories (e.g., `/public/app/notes/notes.controller.js`)
+- Move HTTP calls from controller(s) into service(s)
+- Set up routes (with `ui-router`) and templates
+- Ensure that all frontend modules and templates are imported and utilized correctly
+
 
 <!-- When working on your project, feel free to start from Scratch! -->
