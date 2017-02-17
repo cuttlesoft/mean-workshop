@@ -296,5 +296,11 @@ Frontend changes:
 - Set up routes (with `ui-router`) and templates
 - Ensure that all frontend modules and templates are imported and utilized correctly
 
+Backend changes:
+- Create a directory to organize API route behaviors (e.g., `/app/api`) and move existing function definitions into individual files (e.g., `/app/api/notes.js`)
+- Create a directory to organize models (e.g., `/app/models`) and move existing model definitions into individual files (e.g., `/app/models/note.js`)
+- Create a file for defining all of the application's routes (e.g., `/app/routes.js`)
+- Create a directory to organize app configuration (e.g., `/config`) and move existing configurations into individual files (e.g., `/config/db.js`)
+- Ensure that all modules are imported and utilized correctly
 
 <!-- When working on your project, feel free to start from Scratch! -->

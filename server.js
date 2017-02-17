@@ -2,60 +2,35 @@
 
 var express = require('express');
 var app = express();
+var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-var mongoose = require('mongoose');
+var db = require('./config/db');
+var routes = require('./app/routes');
 
 // Basic configuration
 
-var port = process.env.PORT || 3001;
-var databaseUrl = 'mongodb://localhost/scratch-dev';
-
-mongoose.connect(databaseUrl);
+mongoose.connect(db.url);
 
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-// Model(s)
-
-var Note = mongoose.model('Note', {
-  title: String,
-  content: String,
-});
-
 // Basic routes
 
-app
-  .route('/api/notes')
+routes(app);
 
-  .get(function (req, res) {
-    Note.find(function(err, notes) {
-      if (err) res.send(err);
-      res.json(notes);
-    });
-  })
-  .post(function (req, res) {
-    var note = {
-      title: req.body.title,
-      content: req.body.content,
-    };
-
-    Note.create(note, function(err, note) {
-      if (err) res.send(err);
-      res.json(note);
-    });
-  });
-
-// Set the static files location + index
-
+// Static files directory
 app.use(express.static(__dirname + '/public'));
 
+// Angular app
 app.get('*', function(req, res) {
   res.sendFile('index.html');
 });
 
 // Start app
+
+var port = process.env.PORT || 3001;
 
 app.listen(port, function() {
   console.log('Server running on port ' + port);
