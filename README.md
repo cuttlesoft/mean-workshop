@@ -9,6 +9,7 @@ This project was created for a workshop on web app development with the MEAN sta
 1. **[Basic Angular App](#4-basic-angular-app)**
 1. **[Basic Model](#5-basic-model)**
 1. **[Basic Route](#6-basic-route)**
+1. **[Note Creation](#7-note-creation)**
 
 
 ### 1. Getting Started
@@ -179,5 +180,107 @@ app.route('/api/notes')
 
 Navigating to [`http://localhost:3001/api/notes`](http://localhost:3001/api/notes) should show `[]`, which is the (currently empty) array of notes being returned.
 
+### 7. Note Creation
+
+Install `body-parser` to parse the body from POST requests:
+```
+$ npm install --save body-parser
+```
+
+Configure `body-parser` in `server.js`:
+```javascript
+var bodyParser = require('body-parser');
+
+// ...
+
+app.use(bodyParser.urlencoded({'extended':'true'}));
+app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+```
+
+Add route for creating notes in `server.js`:
+```javascript
+app
+  .route('/api/notes')
+
+  // ...
+
+  .post(function (req, res) {
+    var note = {
+      title: req.body.title,
+      content: req.body.content,
+    };
+
+    Note.create(note, function(err, note) {
+      if (err) res.send(err);
+      res.json(note);
+    });
+  });
+```
+
+Add function for submitting form and creating notes in `app.js`:
+```javascript
+function appController($http) {
+  // ...
+
+  vm.createNote = createNote;
+
+  // ...
+
+  function createNote(note) {
+    $http.post('/api/notes', note).then(function(res) {
+      // Add new note to notes in the view
+      var note = res.data;
+      vm.notes.push(note);
+    }, function(err) {
+      console.log('Error creating note: ', err.statusText);
+    });
+  }
+}
+```
+
+Add function for getting notes for display in `app.js`:
+```javascript
+function appController($http) {
+  // ...
+
+  vm.getNotes = getNotes;
+
+  // ...
+
+  function getNotes() {
+    $http.get('/api/notes').then(function(res) {
+      vm.notes = res.data;
+    }, function(err) {
+      console.log('Error retrieving notes: ', err.statusText);
+    });
+  }
+}
+```
+
+Add HTML form for creating notes in `index.html`:
+```html
+<form>
+    <label for="title">Title</label>
+    <input type="text" id="title" ng-model="note.title" placeholder="Note Title">
+
+    <label for="content">Content</label>
+    <textarea id="content" ng-model="note.content" placeholder="Note content..."></textarea>
+
+    <button type="submit" class="btn btn-success" ng-click="app.createNote(note)">Create Note</button>
+</form>
+```
+
+Add HTML for displaying the (newly-creatable) notes in `index.html`:
+```html
+<div class="panel panel-default" ng-repeat="note in app.notes">
+    <div class="panel-heading">
+        {{ note.title }}
+    </div>
+    <div class="panel-body">
+        {{ note.content }}
+    </div>
+</div>
+```
 
 <!-- When working on your project, feel free to start from Scratch! -->

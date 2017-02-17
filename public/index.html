@@ -25,10 +25,37 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
 
-                Hello (again), world!
+            <div class="col-xs-12 col-md-6 pull-right">
+                <h2>Create Note</h2>
 
+                <form>
+                    <div class="form-group">
+                        <label for="title" class="control-label">Title</label>
+                        <input type="text" id="title" ng-model="note.title" placeholder="Note Title" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content" class="control-label">Content</label>
+                        <textarea id="content" ng-model="note.content" class="form-control" placeholder="Note content..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-success" ng-click="app.createNote(note)">Create Note</button>
+                </form>
+            </div>
+
+
+            <div class="col-xs-12 col-md-6">
+                <h2>Notes</h2>
+
+                <div class="panel panel-default" ng-repeat="note in app.notes">
+                    <div class="panel-heading">
+                        {{ note.title }}
+                    </div>
+                    <div class="panel-body">
+                        {{ note.content }}
+                    </div>
+                </div>
             </div>
         </div>
 

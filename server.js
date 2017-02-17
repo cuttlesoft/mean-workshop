@@ -2,6 +2,7 @@
 
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 
@@ -11,6 +12,10 @@ var port = process.env.PORT || 3001;
 var databaseUrl = 'mongodb://localhost/scratch-dev';
 
 mongoose.connect(databaseUrl);
+
+app.use(bodyParser.urlencoded({'extended':'true'}));
+app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 // Model(s)
 
@@ -28,6 +33,17 @@ app
     Note.find(function(err, notes) {
       if (err) res.send(err);
       res.json(notes);
+    });
+  })
+  .post(function (req, res) {
+    var note = {
+      title: req.body.title,
+      content: req.body.content,
+    };
+
+    Note.create(note, function(err, note) {
+      if (err) res.send(err);
+      res.json(note);
     });
   });
 
