@@ -3,7 +3,9 @@
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
+
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 
 var db = require('./config/db');
 var routes = require('./app/routes');
@@ -15,6 +17,8 @@ mongoose.connect(db.url);
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+
+app.use(methodOverride());
 
 // Basic routes
 

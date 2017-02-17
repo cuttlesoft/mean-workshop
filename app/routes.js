@@ -6,9 +6,10 @@ var notes = require('./api/notes');
 
 var routes = function(app) {
   // Notes routes
-  app.route('/api/notes')
+  app.route('/api/notes/:id?')
     .get(notes.getNotes)
     .post(notes.createNote)
+    .delete(notes.deleteNote)
     ;
 };
 

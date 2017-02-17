@@ -7,7 +7,8 @@ function NotesService($http) {
 
   var service = {
     getNotes: getNotes,
-    create: create,
+    createNote: createNote,
+    deleteNote: deleteNote,
   };
 
   return service;
@@ -16,7 +17,11 @@ function NotesService($http) {
     return $http.get(url);
   }
 
-  function create(note) {
+  function createNote(note) {
     return $http.post(url, note);
+  }
+
+  function deleteNote(id) {
+    return $http.delete(`${url}/${id}`);
   }
 }

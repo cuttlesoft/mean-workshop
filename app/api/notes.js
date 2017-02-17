@@ -23,9 +23,19 @@ function createNote(req, res) {
   });
 }
 
+function deleteNote(req, res) {
+  var noteId = req.params.id;
+
+  Note.remove({ _id: noteId }, function(err, note) {
+    if (err) res.send(err);
+    res.json(note);
+  });
+}
+
 // Export
 
 module.exports = {
   getNotes: getNotes,
   createNote: createNote,
+  deleteNote: deleteNote,
 };

@@ -11,6 +11,7 @@ This project was created for a workshop on web app development with the MEAN sta
 1. **[Basic Route](#6-basic-route)**
 1. **[Note Creation](#7-note-creation)**
 1. **[Restructure for Scalability](#8-restructure-for-scalability)**
+1. **[Miscellaneous Improvements](#9-miscellaneous-improvements)**
 
 
 ### 1. Getting Started
@@ -302,5 +303,14 @@ Backend changes:
 - Create a file for defining all of the application's routes (e.g., `/app/routes.js`)
 - Create a directory to organize app configuration (e.g., `/config`) and move existing configurations into individual files (e.g., `/config/db.js`)
 - Ensure that all modules are imported and utilized correctly
+
+### 9. Miscellaneous Improvements
+
+- Note deletion
+  - Add `method-override` package for `PUT` and `DELETE` requests (for updating and deleting objects, respectively)
+  - API route to delete notes
+  - Notes service function to make request
+  - Notes controller function to call service
+  - Button in view
 
 <!-- When working on your project, feel free to start from Scratch! -->

@@ -13,7 +13,7 @@
                 <textarea id="content" ng-model="note.content" class="form-control" placeholder="Note content..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-success" ng-click="notes.create(note)">Create Note</button>
+            <button type="submit" class="btn btn-success" ng-click="notes.createNote(note)">Create Note</button>
         </form>
     </div>
 
@@ -23,6 +23,10 @@
         <div class="panel panel-default" ng-repeat="note in notes.notes">
             <div class="panel-heading">
                 {{ note.title }}
+
+                <button class="btn btn-danger btn-sm pull-right" ng-click="notes.deleteNote(note)">
+                    <span class="glyphicon glyphicon-trash"><span class="sr-only">Delete Note</span></span>
+                </button>
             </div>
             <div class="panel-body">
                 {{ note.content }}
