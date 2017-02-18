@@ -12,6 +12,7 @@ This project was created for a workshop on web app development with the MEAN sta
 1. **[Note Creation](#7-note-creation)**
 1. **[Restructure for Scalability](#8-restructure-for-scalability)**
 1. **[Miscellaneous Improvements](#9-miscellaneous-improvements)**
+1. **[Presentation!](#10-presentation)**
 
 
 ### 1. Getting Started
@@ -316,5 +317,9 @@ Backend changes:
   - Add custom filter to reverse note order in list (order newest to oldest)
   - Clear form when note is created
   - Clear form with "Cancel" button
+
+### 10. Presentation!
+
+You can view the PDF for the workshop presentation [here](https://github.com/cuttlesoft/mean-workshop/blob/workshop/Workshop.pdf).
 
 <!-- When working on your project, feel free to start from Scratch! -->
